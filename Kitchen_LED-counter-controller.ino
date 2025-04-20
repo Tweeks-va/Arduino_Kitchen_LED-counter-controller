@@ -3,6 +3,8 @@ int relayPin=10;
 int lightPin=1;
 int lightValue=0;
 
+int lightThreshold=490;
+
 // smoothReadLight() variables
 const int numReadings = 10;
 int readings[numReadings];      // the readings from the analog input
@@ -18,16 +20,14 @@ void loop() {
   smoothReadLight();        // reads light avg value into global variable lightValue
   Serial.print("lightValue=");
   Serial.println(lightValue);  
-  delay(100);
+  delay(50);
 
-  if(lightValue > 500){
+  if(lightValue > lightThreshold){
     digitalWrite(relayPin, HIGH);
     delay(2000);
   } else {
     digitalWrite(relayPin, LOW);
   }
-
-
   
   delay(1);        // delay in between reads for stability
 }
@@ -66,4 +66,4 @@ void setup() {
   for (int thisReading = 0; thisReading < numReadings; thisReading++) {
     readings[thisReading] = 0;
   }
-}
+} 
