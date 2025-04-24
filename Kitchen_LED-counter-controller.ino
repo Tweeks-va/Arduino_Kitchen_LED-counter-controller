@@ -3,7 +3,7 @@ int relayPin=10;
 int lightPin=1;
 int lightValue=0;
 
-int lightThreshold=490;
+int lightThreshold=400;
 
 // smoothReadLight() variables
 const int numReadings = 10;
